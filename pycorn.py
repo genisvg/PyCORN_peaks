@@ -405,9 +405,6 @@ def deriv2(x,y):
 def label_peaks(x,y,ymin,ymax,s):
 	x=numpy.asarray(x)
 	y=numpy.asarray(y)
-	#print s
-	#s=int(s/(x[len(x)-1]-x[0])*len(x))
-	#print s
 	derivative1=deriv1(x,y)
 	derivative2=deriv2(x,y)
 	peaks_Deriv1=peaks(derivative1[1], span=s)
@@ -475,10 +472,9 @@ def plotter(inp,fractions):
         plt.plot(x_val, y_val,linewidth=1.5, color='b')
         if inp['data_name']=='UV':
         	plt.scatter(peaks[0], peaks[1], s=40)
-        	ann=[]
         	x_text_shift=0.01*(plot_x_max-plot_x_min)
-        	for i in range(len(peaks)):
-    			ann.append(plt.annotate(peaks[1][i], xy = (peaks[0][i]+x_text_shift, peaks[1][i])))
+        	for i in range(0:len(peaks)):
+    			plt.annotate(peaks[0][i], xy = (peaks[0][i]+x_text_shift, peaks[1][i]))
         ax.xaxis.set_minor_locator(AutoMinorLocator())
         ax.yaxis.set_minor_locator(AutoMinorLocator())
         ax.tick_params(axis='x',top='off',which='minor', direction='out', length=4, color='0.17')
